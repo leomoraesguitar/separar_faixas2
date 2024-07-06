@@ -59,9 +59,9 @@ def separate(inp=None, outp=None):
 
     out_path = '/content/separados'  
     if not os.path.exists(in_path):
-    os.makedirs(in_path)
+        os.makedirs(in_path)
     if not os.path.exists(out_path):
-    os.makedirs(out_path)
+        os.makedirs(out_path)
 
 
     inp = inp or in_path
