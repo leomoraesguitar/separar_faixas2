@@ -83,7 +83,7 @@ def separate(inp=None, outp=None):
     print("Going to separate the files:")
     print('\n'.join(files))
     print("With command: ", " ".join(cmd))
-    input('asdalkjdlaj')
+
     p = sp.Popen(cmd + files, stdout=sp.PIPE, stderr=sp.PIPE)
     copy_process_streams(p)
     p.wait()
