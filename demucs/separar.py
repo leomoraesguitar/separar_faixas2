@@ -103,7 +103,7 @@ def main():
 
     args = parser.parse_args()
 
-    if args.acao == 'separate':
+    if args.separar == 'separate':
         separate()
    
 
