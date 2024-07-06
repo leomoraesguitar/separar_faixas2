@@ -1,3 +1,4 @@
+import argparse
 
 import io
 from pathlib import Path
@@ -13,16 +14,9 @@ from google.colab import files
 #@title #Funções
 
 
-in_path = '/content'
-
-out_path = '/content/separados'
 
 
 
-if not os.path.exists(in_path):
-  os.makedirs(in_path)
-if not os.path.exists(out_path):
-  os.makedirs(out_path)
 
 
 
@@ -61,6 +55,15 @@ def copy_process_streams(process: sp.Popen):
         std.flush()
 
 def separate(inp=None, outp=None):
+    in_path = '/content'
+
+    out_path = '/content/separados'  
+    if not os.path.exists(in_path):
+    os.makedirs(in_path)
+    if not os.path.exists(out_path):
+    os.makedirs(out_path)
+
+
     inp = inp or in_path
     outp = outp or out_path
     model = "htdemucs_ft" # param ["htdemucs", "htdemucs_ft", "htdemucs_6s", "hdemucs_mmi", "mdx", "mdx_extra", "mdx_q", "SIG"]
@@ -87,5 +90,25 @@ def separate(inp=None, outp=None):
     if p.returncode != 0:
         print("Command failed, something went wrong.")
 
+
+
+
+
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--separar', choices=['separate'])
+    # parser.add_argument('--separar', choices=['separate'])
+
+    args = parser.parse_args()
+
+    if args.acao == 'separate':
+        separate()
+   
+
+if __name__ == "__main__":
+    # print('Para executar, faça: python comandopythonlinha.py --acao [acao1, acao2]')
+    main()
 
 
